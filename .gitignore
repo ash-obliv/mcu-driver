@@ -1,0 +1,89 @@
+# 编译输出和二进制文件
+bin/
+obj/
+build/
+dist/
+out/
+target/
+*.exe
+*.dll
+*.so
+*.dylib
+*.o
+*.a
+*.class
+*.jar
+*.war
+*.ear
+*.pyc
+*.pyo
+__pycache__/
+*.ipynb_checkpoints
+
+# 日志和数据库文件
+*.log
+*.sql
+*.sqlite
+*.db
+
+# 操作系统生成的文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE 和编辑器配置（避免提交个人设置）
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+*.vs/
+
+# 版本控制元数据（防止嵌套仓库）
+.git
+.svn
+.hg
+
+# 包管理器缓存
+node_modules/
+venv/
+env/
+.env
+.venv
+npm-debug.log*
+yarn-error.log*
+yarn-debug.log*
+.pnpm-debug.log*
+
+# 临时文件
+*.tmp
+*.temp
+*~
+.*.swp
+.*.swo
+
+# 敏感信息（强烈建议忽略）
+*.pem
+*.key
+*.crt
+*.cert
+secrets.yaml
+config/local.*
+local.settings.json
+
+# Docker 相关（可选，按需保留）
+.dockerignore
+
+# 测试和覆盖率报告（可选）
+coverage/
+.nyc_output/

@@ -1,0 +1,6 @@
+01_demo\st7735s.o: ..\Inf\st7735s.c
+01_demo\st7735s.o: ..\Inf\st7735s.h
+01_demo\st7735s.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+01_demo\st7735s.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+01_demo\st7735s.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+01_demo\st7735s.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
