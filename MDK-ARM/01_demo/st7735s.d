@@ -4,3 +4,6 @@
 01_demo\st7735s.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 01_demo\st7735s.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 01_demo\st7735s.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+01_demo\st7735s.o: ..\Inf\st7735s_data.h
+01_demo\st7735s.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+01_demo\st7735s.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

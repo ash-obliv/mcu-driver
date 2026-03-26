@@ -57,15 +57,16 @@ void TFT_SetRotation(uint8_t rotation); // 0-3: 0°, 90°, 180°, 270°
 void TFT_SetBacklight(uint8_t on);     // 0=关, 1=开
 
 //========== 显示中文 ==========
-void TFT_ShowChar(uint8_t x, uint8_t y, uint16_t fc, uint16_t bc, char c);
-void TFT_ShowString(uint8_t x, uint8_t y, uint16_t fc, uint16_t bc, const char *str);
-void TFT_ShowNumber(uint8_t x, uint8_t y, uint16_t fc, uint16_t bc, long long num);
-void TFT_ShowChinese(uint8_t x, uint8_t y, uint16_t fc, uint16_t bc, const char *str);
+void TFT_ShowChar(uint16_t x, uint16_t y, uint16_t fc, uint16_t bc, char c);
+void TFT_ShowString(uint16_t x, uint16_t y, uint16_t fc, uint16_t bc, const char *str);
+void TFT_ShowNumber(uint16_t x, uint16_t y, uint16_t fc, uint16_t bc, long long num);
+void TFT_ShowFloat(uint16_t x, uint16_t y, uint16_t fc, uint16_t bc, float num, uint8_t decimal_places);
+int TFT_Printf(uint16_t x, uint16_t y, uint16_t color, const char *format, ...);
 
 //========== 图形接口 ==========
-void TFT_DrawLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t color);
-void TFT_DrawCircle(uint16_t x, uint16_t y, uint16_t r, uint16_t color);
-void TFT_DrawBox(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t color);
+void TFT_DrawLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t color, uint16_t width);
+void TFT_DrawCircle(uint16_t x, uint16_t y, uint16_t radius, uint16_t color, uint16_t width);
+void TFT_DrawRect(uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t color, uint16_t width);
 
 //========== 图像接口 ==========
 void TFT_ShowImage(uint16_t x, uint16_t y, uint16_t width, uint16_t height, const uint8_t *image);
