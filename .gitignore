@@ -87,3 +87,9 @@ local.settings.json
 # 测试和覆盖率报告（可选）
 coverage/
 .nyc_output/
+
+
+MDK-ARM/DebugConfig
+MDK-ARM/01_demo
+MDK-ARM/.vscode
+MDK-ARM/RTE

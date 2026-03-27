@@ -15,6 +15,7 @@
 "01_demo\system_stm32f1xx.o"
 "01_demo\middle_tft.o"
 "01_demo\st7735s.o"
+"01_demo\mpu6050.o"
 "01_demo\main.o"
 "01_demo\gpio.o"
 "01_demo\spi.o"

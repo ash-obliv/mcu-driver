@@ -525,6 +525,11 @@
               <FileType>1</FileType>
               <FilePath>..\Middle\middle_tft.c</FilePath>
             </File>
+            <File>
+              <FileName>middle_mpu6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middle\middle_mpu6050.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -534,6 +539,11 @@
               <FileName>st7735s.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Inf\st7735s.c</FilePath>
+            </File>
+            <File>
+              <FileName>mpu6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Inf\mpu6050.c</FilePath>
             </File>
           </Files>
         </Group>

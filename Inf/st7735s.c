@@ -369,14 +369,13 @@ void TFT_ShowChar(uint16_t x, uint16_t y, uint16_t fc, uint16_t bc, char c)
     // 设置显示窗口 (5×8像素)
     _TFT_SetAddressWindow(x, y, x + 4, y + 7);
 
-    // 逐字节绘制字体
+    // 字库是“每列1字节、共5列”，每个字节的bit0~bit7对应行0~行7
     for (uint8_t row = 0; row < 8; row++)
     {
-        uint8_t byte = font_data[row];
         for (uint8_t col = 0; col < 5; col++)
         {
-            // 从MSB到LSB逐位检查
-            if (byte & (0x80 >> col))
+            uint8_t byte = font_data[col];
+            if (byte & (1U << row))
             {
                 _TFT_SendData16(fc); // 前景色
             }
