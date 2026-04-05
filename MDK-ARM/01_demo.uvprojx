@@ -530,6 +530,11 @@
               <FileType>1</FileType>
               <FilePath>..\Middle\middle_mpu6050.c</FilePath>
             </File>
+            <File>
+              <FileName>middle_dht11.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middle\middle_dht11.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -544,6 +549,11 @@
               <FileName>mpu6050.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Inf\mpu6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>dht11.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Inf\dht11.c</FilePath>
             </File>
           </Files>
         </Group>
