@@ -1,29 +1,29 @@
-01_demo\spi.o: ../Core/Src/spi.c
-01_demo\spi.o: ../Core/Inc/spi.h
-01_demo\spi.o: ../Core/Inc/main.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
-01_demo\spi.o: ../Core/Inc/stm32f1xx_hal_conf.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
-01_demo\spi.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
-01_demo\spi.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h
-01_demo\spi.o: ../Drivers/CMSIS/Include/core_cm3.h
-01_demo\spi.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-01_demo\spi.o: ../Drivers/CMSIS/Include/cmsis_version.h
-01_demo\spi.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
-01_demo\spi.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
-01_demo\spi.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-01_demo\spi.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
-01_demo\spi.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
+01_demo/spi.o: ..\Core\Src\spi.c ..\Core\Inc\spi.h ..\Core\Inc\main.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h \
+  ..\Core\Inc\stm32f1xx_hal_conf.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h \
+  ..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h \
+  ..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h \
+  ..\Drivers\CMSIS\Include\core_cm3.h \
+  D:\App\Keil_v5\ARM\ARMCLANG\include\stdint.h \
+  D:\code\STM32\STM32F103ZE\01_demo\Drivers\CMSIS\Include\cmsis_version.h \
+  D:\code\STM32\STM32F103ZE\01_demo\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\code\STM32\STM32F103ZE\01_demo\Drivers\CMSIS\Include\cmsis_armclang.h \
+  D:\App\Keil_v5\ARM\ARMCLANG\include\arm_compat.h \
+  D:\App\Keil_v5\ARM\ARMCLANG\include\arm_acle.h \
+  ..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
+  D:\App\Keil_v5\ARM\ARMCLANG\include\stddef.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_exti.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_i2c.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pwr.h \
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_spi.h

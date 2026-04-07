@@ -18,13 +18,17 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "i2c.h"
 #include "spi.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "st7735s.h"
-#include "middle_tft.h"
+#include "OLED.h"
+#include "middle_oled.h"
+#include "middle_dht11.h"
+#include "key.h"
+#include "middle_key.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,7 +60,8 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+Key_Handle_t g_key1;
+Key_Handle_t g_key2;
 /* USER CODE END 0 */
 
 /**
@@ -89,25 +94,50 @@ int main(void)
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
     MX_SPI1_Init();
+    MX_I2C1_Init();
     /* USER CODE BEGIN 2 */
+    BSP_OLED_Init();
+    // BSP_DHT11_Init();
 
-    // 1.registerDriver
-    BSP_TFT_Init();
+    BSP_Key_Init();
 
-    TFT_ShowString(0, 0, 0xFFFF, 0x0000, "Hello, TFT!");
-    // TFT_Printf(0, 0, 0xFFFF, "hello world, %d", 80);
-    // TFT_Printf(0, 10, 0xF800, "Temperature: %.1f°C", 25.5);
-    // TFT_Printf(0, 20, 0x07E0, "Counter: %04d", 123);
-    // TFT_Printf(0, 30, 0x001F, "Hex: 0x%04X", 0xABCD);
-
-    TFT_DrawCircle(64, 80, 30, RED, 3);
-    TFT_DrawLine(10, 150, 118, 150, GREEN, 2);
     /* USER CODE END 2 */
 
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
     while (1)
     {
+        KeyEvent_t event1 = Key_Scan(&g_key1);
+        KeyEvent_t event2 = Key_Scan(&g_key2);
+
+        if(event1 != KEY_EVENT_NONE)
+        {
+            // 处理按键1事件
+            switch (event1)
+            {
+            case KEY_EVENT_SHORT_PRESS:
+                HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+                break;
+            
+            default:
+                break;
+            }
+        }
+
+        if(event2 != KEY_EVENT_NONE)
+        {
+            // 处理按键2事件
+            switch (event2)
+            {
+            case KEY_EVENT_SHORT_PRESS:
+                HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+                break;
+            
+            default:
+                break;
+            }
+        }
+
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */

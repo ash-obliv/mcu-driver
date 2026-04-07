@@ -4,27 +4,13 @@
 //========== DHT11 硬件引脚定义 ==========
 // 请根据你的实际硬件修改这些定义
 // 示例（假设 DHT11 数据线连接到 PA2）：
-#define DHT11_DATA_PIN         GPIO_PIN_2
-#define DHT11_DATA_GPIO_PORT   GPIOA
+#define DHT11_DATA_PIN         GPIO_PIN_6
+#define DHT11_DATA_GPIO_PORT   GPIOE
 
 //========== GPIO 初始化函数 ==========
 static void _GPIO_Init(void)
 {
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-    // 确保时钟已启用（通常已在 MX_GPIO_Init 中启用）
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-
-    // 初始化为输入模式（浮空输入或上拉输入）
-    GPIO_InitStruct.Pin = DHT11_DATA_PIN;
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;  // 或改为 GPIO_PULLUP，取决于你的硬件电路
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-
-    HAL_GPIO_Init(DHT11_DATA_GPIO_PORT, &GPIO_InitStruct);
-
-    // 初始状态：释放引脚（高电平）
-    // 这会让外部上拉电阻将引脚拉高
+    return; // GPIO 初始化在 main.c 的 MX_GPIO_Init() 中完成，这里不需要重复初始化
 }
 
 //========== 设置引脚为输出模式（推挽）==========
