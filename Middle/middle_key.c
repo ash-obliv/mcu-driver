@@ -34,17 +34,17 @@ void BSP_Key_Init(void)
     Key_Config_t key1_config = {0};
     key1_config.pin_id = 1;                       // 按键1的ID为1
     key1_config.debounce_ms = 20;                 // 消抖时间 20
-    key1_config.long_press_ms = 0;               // 长按判定时间 1000ms
-    key1_config.active_level = KEY_LEVEL_LOW;    // 按键有效电平为低
-    key1_config.double_click_ms = 0;            // 双击间隔窗口 300ms
+    key1_config.long_press_ms = 0;                //  取消长按功能
+    key1_config.active_level = KEY_LEVEL_LOW;     // 按键有效电平为低
+    key1_config.double_click_ms = 0;              // 取消双击功能
     Key_ObjInit(&g_key1, &key1_config);
 
     Key_Config_t key2_config = {0};
-    key2_config.pin_id = 2;                       // 按键2的ID为2
+    key2_config.pin_id = 2;                      // 按键2的ID为2
     key2_config.debounce_ms = 20;                // 消抖时间 15
     key2_config.long_press_ms = 1000;            // 长按判定时间 1000ms
     key2_config.active_level = KEY_LEVEL_LOW;    // 按键有效电平
-    key2_config.double_click_ms = 0;             // 双击间隔窗口 300ms
+    key2_config.double_click_ms = 0;             // 取消双击功能
 
     Key_ObjInit(&g_key2, &key2_config);
 }

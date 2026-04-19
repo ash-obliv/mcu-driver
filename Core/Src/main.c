@@ -18,17 +18,18 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "dma.h"
 #include "i2c.h"
 #include "spi.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "OLED.h"
-#include "middle_oled.h"
-#include "middle_dht11.h"
 #include "key.h"
 #include "middle_key.h"
+#include "shell.h"
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -62,6 +63,7 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 Key_Handle_t g_key1;
 Key_Handle_t g_key2;
+
 /* USER CODE END 0 */
 
 /**
@@ -93,13 +95,18 @@ int main(void)
 
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
+    MX_DMA_Init();
     MX_SPI1_Init();
     MX_I2C1_Init();
+    MX_USART1_UART_Init();
     /* USER CODE BEGIN 2 */
-    BSP_OLED_Init();
-    // BSP_DHT11_Init();
-
     BSP_Key_Init();
+
+    // 串口空闲接收
+    printf("hello world");
+    // HAL_UARTEx_ReceiveToIdle_IT(&huart1, (uint8_t *)g_uart1_rx_buffer, UART1_RX_BUFFER_SIZE);
+
+
 
     /* USER CODE END 2 */
 
@@ -110,33 +117,37 @@ int main(void)
         KeyEvent_t event1 = Key_Scan(&g_key1);
         KeyEvent_t event2 = Key_Scan(&g_key2);
 
-        if(event1 != KEY_EVENT_NONE)
+        if (event1 != KEY_EVENT_NONE)
         {
             // 处理按键1事件
             switch (event1)
             {
             case KEY_EVENT_SHORT_PRESS:
                 HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+                HAL_UART_Transmit(&huart1, (uint8_t *)"Key1 Short Press\r\n", 18, HAL_MAX_DELAY);
                 break;
-            
+
             default:
                 break;
             }
         }
 
-        if(event2 != KEY_EVENT_NONE)
+        if (event2 != KEY_EVENT_NONE)
         {
             // 处理按键2事件
             switch (event2)
             {
             case KEY_EVENT_SHORT_PRESS:
                 HAL_GPIO_TogglePin(LED2_GPIO_Port, LED2_Pin);
+                HAL_UART_Transmit(&huart1, (uint8_t *)"Key2 Short Press\r\n", 18, HAL_MAX_DELAY);
                 break;
-            
+
             default:
                 break;
             }
         }
+
+
 
         /* USER CODE END WHILE */
 
@@ -184,7 +195,17 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+// 串口中断回调函数
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+{
 
+}
+
+int fputc(int ch, FILE *f)
+{
+    HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
+    return ch;
+}
 /* USER CODE END 4 */
 
 /**

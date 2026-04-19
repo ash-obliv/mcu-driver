@@ -13,7 +13,11 @@
 "01_demo\stm32f1xx_hal_flash_ex.o"
 "01_demo\stm32f1xx_hal_exti.o"
 "01_demo\stm32f1xx_hal_spi.o"
+"01_demo\stm32f1xx_hal_uart.o"
 "01_demo\system_stm32f1xx.o"
+"01_demo\ring.o"
+"01_demo\shell.o"
+"01_demo\shell_ext.o"
 "01_demo\middle_tft.o"
 "01_demo\middle_mpu6050.o"
 "01_demo\middle_dht11.o"
@@ -27,11 +31,13 @@
 "01_demo\key.o"
 "01_demo\main.o"
 "01_demo\gpio.o"
+"01_demo\dma.o"
 "01_demo\i2c.o"
 "01_demo\spi.o"
+"01_demo\usart.o"
 "01_demo\stm32f1xx_it.o"
 "01_demo\stm32f1xx_hal_msp.o"
---strict --scatter "01_demo\01_demo.sct"
+--library_type=microlib --strict --scatter "01_demo\01_demo.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "01_demo.map" -o 01_demo\01_demo.axf

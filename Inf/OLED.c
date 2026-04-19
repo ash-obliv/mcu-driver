@@ -578,36 +578,10 @@ void OLED_ShowFloatNum(int16_t X, int16_t Y, double Number, uint8_t IntLength, u
  */
 void OLED_ShowChinese(int16_t X, int16_t Y, char *Chinese)
 {
-	uint8_t pChinese = 0;
-	uint8_t pIndex;
-	uint8_t i;
-	char SingleChinese[OLED_CHN_CHAR_WIDTH + 1] = {0};
-
-	for (i = 0; Chinese[i] != '\0'; i++) // 遍历汉字串
-	{
-		SingleChinese[pChinese] = Chinese[i]; // 提取汉字串数据到单个汉字数组
-		pChinese++;							  // 计次自增
-
-		/*当提取次数到达OLED_CHN_CHAR_WIDTH时，即代表提取到了一个完整的汉字*/
-		if (pChinese >= OLED_CHN_CHAR_WIDTH)
-		{
-			pChinese = 0; // 计次归零
-
-			/*遍历整个汉字字模库，寻找匹配的汉字*/
-			/*如果找到最后一个汉字（定义为空字符串），则表示汉字未在字模库定义，停止寻找*/
-			for (pIndex = 0; strcmp(OLED_CF16x16[pIndex].Index, "") != 0; pIndex++)
-			{
-				/*找到匹配的汉字*/
-				if (strcmp(OLED_CF16x16[pIndex].Index, SingleChinese) == 0)
-				{
-					break; // 跳出循环，此时pIndex的值为指定汉字的索引
-				}
-			}
-
-			/*将汉字字模库OLED_CF16x16的指定数据以16*16的图像格式显示*/
-			OLED_ShowImage(X + ((i + 1) / OLED_CHN_CHAR_WIDTH - 1) * 16, Y, 16, 16, OLED_CF16x16[pIndex].Data);
-		}
-	}
+	/* 项目不再支持中文字模显示，保留接口以兼容现有调用 */
+	(void)X;
+	(void)Y;
+	(void)Chinese;
 }
 
 /**

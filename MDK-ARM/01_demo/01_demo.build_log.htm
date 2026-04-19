@@ -9,12 +9,12 @@ License Information: 1 obliv, 1, LIC=QF82M-X7BR3-VE1HA-1WGTL-1DVA4-ADKSN
  
 Tool Versions:
 Toolchain:       MDK-ARM Plus  Version: 5.39.0.0
-Toolchain Path:  D:\App\Keil_v5\ARM\ARMCLANG\Bin
-C Compiler:      ArmClang.exe V6.21
-Assembler:       Armasm.exe V6.21
-Linker/Locator:  ArmLink.exe V6.21
-Library Manager: ArmAr.exe V6.21
-Hex Converter:   FromElf.exe V6.21
+Toolchain Path:  D:\App\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
 CPU DLL:         SARMCM3.DLL V5.39.0.0
 Dialog DLL:      DCM.DLL V1.17.5.0
 Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.2.0.0
@@ -22,18 +22,38 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 D:\code\STM32\STM32F103ZE\01_demo\MDK-ARM\01_demo.uvprojx
-Project File Date:  04/07/2026
+Project File Date:  04/19/2026
 
 <h2>Output:</h2>
-*** Using Compiler 'V6.21', folder: 'D:\App\Keil_v5\ARM\ARMCLANG\Bin'
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\App\Keil_v5\ARM\ARMCC\Bin'
 Build target '01_demo'
-compiling key.c...
-compiling middle_mpu6050.c...
 compiling main.c...
-linking...
-Program Size: Code=10504 RO-data=380 RW-data=20 ZI-data=2932  
-FromELF: creating hex file...
-"01_demo\01_demo.axf" - 0 Error(s), 0 Warning(s).
+../Core/Src/main.c(61): error:  #20: identifier "Key_Handle_t" is undefined
+  Key_Handle_t g_key1;
+../Core/Src/main.c(62): error:  #20: identifier "Key_Handle_t" is undefined
+  Key_Handle_t g_key2;
+../Core/Src/main.c(100): warning:  #223-D: function "BSP_Key_Init" declared implicitly
+      BSP_Key_Init();
+../Core/Src/main.c(103): warning:  #223-D: function "printf" declared implicitly
+      printf("hello world");
+../Core/Src/main.c(114): error:  #20: identifier "KeyEvent_t" is undefined
+          KeyEvent_t event1 = Key_Scan(&g_key1);
+../Core/Src/main.c(114): warning:  #223-D: function "Key_Scan" declared implicitly
+          KeyEvent_t event1 = Key_Scan(&g_key1);
+../Core/Src/main.c(115): error:  #20: identifier "KeyEvent_t" is undefined
+          KeyEvent_t event2 = Key_Scan(&g_key2);
+../Core/Src/main.c(117): error:  #20: identifier "KEY_EVENT_NONE" is undefined
+          if (event1 != KEY_EVENT_NONE)
+../Core/Src/main.c(122): error:  #20: identifier "KEY_EVENT_SHORT_PRESS" is undefined
+              case KEY_EVENT_SHORT_PRESS:
+../Core/Src/main.c(132): error:  #20: identifier "KEY_EVENT_NONE" is undefined
+          if (event2 != KEY_EVENT_NONE)
+../Core/Src/main.c(137): error:  #20: identifier "KEY_EVENT_SHORT_PRESS" is undefined
+              case KEY_EVENT_SHORT_PRESS:
+../Core/Src/main.c(201): error:  #20: identifier "FILE" is undefined
+  int fputc(int ch, FILE *f)
+../Core/Src/main.c: 3 warnings, 9 errors
+"01_demo\01_demo.axf" - 9 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -56,7 +76,8 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE@5.6.0
-Build Time Elapsed:  00:00:00
+Target not created.
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

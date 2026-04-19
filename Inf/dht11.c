@@ -82,7 +82,7 @@ DHT11_Status_t DHT11_Uninit(void)
 // 等待引脚电平变化（用于超时控制）
 static DHT11_Status_t _Wait_Pin_Edge(uint8_t target_level, uint32_t timeout_us)
 {
-    uint32_t start = 0;
+    // uint32_t start = 0;
     // 简单的超时计数（实际应该用定时器，这里用循环估算）
     for (uint32_t i = 0; i < timeout_us * 2; i++)
     {
@@ -98,7 +98,7 @@ static DHT11_Status_t _Wait_Pin_Edge(uint8_t target_level, uint32_t timeout_us)
 static uint32_t _Measure_Pulse_Width(uint8_t start_level)
 {
     uint32_t width = 0;
-    uint8_t current_level = start_level;
+    // uint8_t current_level = start_level;
     
     // 等待电平反转
     while (g_dht11_driver->pin_read() == start_level && width < 250)
