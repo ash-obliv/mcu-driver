@@ -30,6 +30,9 @@
 #include "middle_key.h"
 #include "shell.h"
 #include <stdio.h>
+#include "middle_oled.h"
+#include "OLED.h"
+#include "ring.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -63,6 +66,49 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN 0 */
 Key_Handle_t g_key1;
 Key_Handle_t g_key2;
+
+#define UART1_RX_BUFFER_SIZE 32
+uint8_t g_uart1_rx_buffer[UART1_RX_BUFFER_SIZE];
+
+// 定义一个大的循环缓冲区
+#define UART1_RING_BUFFER_SIZE 256
+uint8_t g_uart1_ring_buffer[UART1_RING_BUFFER_SIZE];
+ring_t g_uart1_ring;
+
+// 从缓冲区读出来的数据
+uint8_t buf[UART1_RING_BUFFER_SIZE] = {0};
+
+// 1.定义一个shell 的对象  实现必要的两个函数
+SHELL_TypeDef shell;
+void shellWriteChar(char c)
+{
+    // 使用您的串口发送函数，例如 HAL_UART_Transmit
+    HAL_UART_Transmit(&huart1, (uint8_t *)&c, 1, HAL_MAX_DELAY);
+}
+
+signed char shellReadChar(char *ch)
+{
+    // 尝试从环形缓冲区读取一个字节
+    if (ring_read(&g_uart1_ring, (uint8_t *)ch, 1) == 1)
+    {
+        return 0; // 成功
+    }
+    return -1; // 失败，缓冲区为空
+}
+
+// 2.两个示例函数
+void hello(void)
+{
+    shellPrint(shellGetCurrent(), "Hello from STM32!\r\n");
+}
+SHELL_EXPORT_CMD(hello, hello, say hello);
+
+void add(int a, int b)
+{
+    shellPrint(shellGetCurrent(), "%d + %d = %d\r\n", a, b, a + b);
+}
+// 导出命令
+SHELL_EXPORT_CMD(add, add, add two numbers);
 
 /* USER CODE END 0 */
 
@@ -101,12 +147,20 @@ int main(void)
     MX_USART1_UART_Init();
     /* USER CODE BEGIN 2 */
     BSP_Key_Init();
+    BSP_OLED_Init();
 
     // 串口空闲接收
     printf("hello world");
-    // HAL_UARTEx_ReceiveToIdle_IT(&huart1, (uint8_t *)g_uart1_rx_buffer, UART1_RX_BUFFER_SIZE);
+    OLED_Printf(0, 0, OLED_8X16, "Hello, OLED!");
+    OLED_Update();
 
+    // 初始化环形缓冲区
+    ring_init(&g_uart1_ring, g_uart1_ring_buffer, UART1_RING_BUFFER_SIZE);
+    HAL_UARTEx_ReceiveToIdle_IT(&huart1, (uint8_t *)g_uart1_rx_buffer, UART1_RX_BUFFER_SIZE);
 
+    shell.write = shellWriteChar;
+    shell.read = shellReadChar;
+    shellInit(&shell);
 
     /* USER CODE END 2 */
 
@@ -147,8 +201,8 @@ int main(void)
             }
         }
 
-
-
+        shellTask(&shell);
+        
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
@@ -198,7 +252,15 @@ void SystemClock_Config(void)
 // 串口中断回调函数
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
+    if (huart->Instance == USART1)
+    {
+        // 将数据推入环形缓冲区
+        ring_write(&g_uart1_ring, g_uart1_rx_buffer, Size);
+        memset(g_uart1_rx_buffer, 0, UART1_RX_BUFFER_SIZE); // 清空临时接收缓冲区
 
+        // 重新启动空闲接收
+        HAL_UARTEx_ReceiveToIdle_IT(&huart1, (uint8_t *)g_uart1_rx_buffer, UART1_RX_BUFFER_SIZE);
+    }
 }
 
 int fputc(int ch, FILE *f)

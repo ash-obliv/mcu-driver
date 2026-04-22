@@ -33,5 +33,16 @@
 01_demo\main.o: ../Core/Inc/spi.h
 01_demo\main.o: ../Core/Inc/usart.h
 01_demo\main.o: ../Core/Inc/gpio.h
+01_demo\main.o: ../Inf/key.h
+01_demo\main.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+01_demo\main.o: ../Middle/middle_key.h
 01_demo\main.o: ..\tool\shell.h
 01_demo\main.o: ..\tool\shell_cfg.h
+01_demo\main.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+01_demo\main.o: ../Middle/middle_oled.h
+01_demo\main.o: ../Inf/OLED.h
+01_demo\main.o: ../Inf/OLED_Data.h
+01_demo\main.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+01_demo\main.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+01_demo\main.o: D:\App\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+01_demo\main.o: ..\tool\ring.h
